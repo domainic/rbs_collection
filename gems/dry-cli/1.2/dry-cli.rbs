@@ -1,0 +1,22 @@
+module Dry
+  class CLI
+    class Command
+      def self.argument: (Symbol name, Hash[Symbol, untyped]) -> void
+
+      def self.desc: (String description) -> void
+
+      def self.example: (Array[String] examples) -> void
+                      | (*String examples) -> void
+
+      def self.option: (Symbol name, Hash[Symbol, untyped]) -> void
+    end
+
+    class Prefix
+      def register: (String name, ?singleton(Command)? command, ?aliases: Array[String], ?hidden: bool) -> void
+    end
+
+    module Registry
+      def register: (String name, ?singleton(Command)? command, ?aliases: Array[String], ?hidden: bool) ?{ (?Prefix) [self: Prefix] -> void } -> void
+    end
+  end
+end
