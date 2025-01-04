@@ -1,0 +1,59 @@
+module Semantic
+  class Version
+    include Comparable
+
+    attr_accessor major: Integer
+    attr_accessor minor: Integer
+    attr_accessor patch: Integer
+    attr_accessor pre: String?
+    attr_reader build: String?
+
+    def initialize: (String version_str) -> void
+
+    def build=: (String? b) -> String?
+
+    def identifiers: (String pre) -> Array[Integer | String]
+
+    def compare_pre: (String? prea, String? preb) -> Integer
+
+    def to_a: () -> Array[Integer | String?]
+
+    def to_s: () -> String
+
+    def to_h: () -> Hash[Symbol, Integer | String?]
+
+    alias to_hash to_h
+    alias to_array to_a
+    alias to_string to_s
+
+    def hash: () -> Integer
+
+    def eql?: (untyped other_version) -> bool
+
+    def <=>: (Version | String other_version) -> Integer?
+
+    def satisfies?: (String other_version) -> bool
+
+    def satisfied_by?: (Array[String] versions) -> bool
+
+    def major!: () -> Version
+
+    def minor!: () -> Version
+
+    def patch!: () -> Version
+
+    def increment!: (Symbol term) -> Version
+
+    private
+
+    def pad_version_string: (String version_string) -> String
+
+    def tilde_matches?: (String other_version_string) -> bool
+
+    def pessimistic_match?: (String other_version_string) -> bool
+
+    def satisfies_comparator?: (String comparator, String other_version_string) -> bool
+
+    def semverified: (String version_string) -> String
+  end
+end
