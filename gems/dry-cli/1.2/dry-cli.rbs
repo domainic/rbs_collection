@@ -1,5 +1,9 @@
 module Dry
   class CLI
+    def initialize: (?(Command | Registry)? command_or_registry) -> void
+
+    def call: (?arguments: Array[String], ?out: IO, ?err: IO) -> void
+
     class Command
       def self.argument: (Symbol name, Hash[Symbol, untyped]) -> void
 
