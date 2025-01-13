@@ -1,0 +1,146 @@
+module Pastel
+  def self.new: (?eachline: String, ?enabled: bool) -> Delegator
+
+  class Delegator
+    # This isn't technically accurate, but it's close enough for our purposes
+
+    def alias_color: (*Symbol) -> self
+
+    def black: () -> self
+             | (*String strings) -> String
+
+    def blue: () -> self
+            | (*String strings) -> String
+
+    def bold: () -> self
+            | (*String strings) -> String
+
+    def bright_black: () -> self
+                    | (*String strings) -> String
+
+    def bright_blue: () -> self
+                   | (*String strings) -> String
+
+    def bright_cyan: () -> self
+                   | (*String strings) -> String
+
+    def bright_green: () -> self
+                    | (*String strings) -> String
+
+    def bright_magenta: () -> self
+                      | (*String strings) -> String
+
+    def bright_red: () -> self
+                  | (*String strings) -> String
+
+    def bright_white: () -> self
+                    | (*String strings) -> String
+
+    def bright_yellow: () -> self
+                     | (*String strings) -> String
+
+    def clear: () -> self
+             | (*String strings) -> String
+
+    def cyan: () -> self
+            | (*String strings) -> String
+
+    def decorate: (String string, *Symbol styles) -> String
+
+    def dim: () -> self
+           | (*String strings) -> String
+
+    def detach: () -> ^() -> Delegator
+              | (*String strings) -> ^(*String strings) -> String
+
+    def enabled?: () -> bool
+
+    def green: () -> self
+             | (*String strings) -> String
+
+    def hidden: () -> self
+              | (*String strings) -> String
+
+    def inverse: () -> self
+               | (*String strings) -> String
+
+    def italic: () -> self
+              | (*String strings) -> String
+
+    def lookup: (Symbol name) -> String
+
+    def magenta: () -> self
+               | (*String strings) -> String
+
+    def on_black: () -> self
+                | (*String strings) -> String
+
+    def on_blue: () -> self
+               | (*String strings) -> String
+
+    def on_bright_black: () -> self
+                       | (*String strings) -> String
+
+    def on_bright_blue: () -> self
+                      | (*String strings) -> String
+
+    def on_bright_cyan: () -> self
+                      | (*String strings) -> String
+
+    def on_bright_green: () -> self
+                       | (*String strings) -> String
+
+    def on_bright_magenta: () -> self
+                         | (*String strings) -> String
+
+    def on_bright_red: () -> self
+                     | (*String strings) -> String
+
+    def on_bright_white: () -> self
+                       | (*String strings) -> String
+
+    def on_bright_yellow: () -> self
+                        | (*String strings) -> String
+
+    def on_cyan: () -> self
+               | (*String strings) -> String
+
+    def on_green: () -> self
+                | (*String strings) -> String
+
+    def on_magenta: () -> self
+                  | (*String strings) -> String
+
+    def on_red: () -> self
+              | (*String strings) -> String
+
+    def on_white: () -> self
+                | (*String strings) -> String
+
+    def on_yellow: () -> self
+                 | (*String strings) -> String
+
+    def red: () -> self
+           | (*String strings) -> String
+
+    def strikethrough: () -> self
+                     | (*String strings) -> String
+
+    def strip: (*String strings) -> String
+
+    def styles: () -> Hash[Symbol, Integer]
+
+    def undecorate: (*String strings) -> Array[Hash[Symbol, untyped]]
+
+    def underline: () -> self
+                 | (*String strings) -> String
+
+    def valid?: (Symbol styles) -> bool
+
+    def white: () -> self
+             | (*String strings) -> String
+
+    def yellow: () -> self
+              | (*String strings) -> String
+  end
+end
