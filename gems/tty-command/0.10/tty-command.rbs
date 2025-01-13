@@ -1,0 +1,57 @@
+module TTY
+  class Command
+    def self.record_separator: () -> (Regexp | String)
+
+    def self.record_separator=: (Regexp | String sep) -> (Regexp | String)
+
+    def self.windows?: () -> bool
+
+    def initialize: (?binmode: bool, ?color: bool, ?dry_run: bool, ?output: IO, ?printer: Symbol, ?pty: bool, ?timeout: __todo__, ?uuid: bool, ?verbose: bool) -> void
+
+    def dry_run?: () -> bool
+
+    def ruby: (*Hash[String, String] | String | Symbol args, **__todo__ command_options) ? { (IO out, IO err) -> void } -> Result
+
+    def run: (*Hash[String, String] | String | Symbol args, **__todo__ command_options) ? { (IO out, IO err) -> void } -> Result
+
+    def run!: (*Hash[String, String] | String | Symbol args, **__todo__ command_options) ? { (IO out, IO err) -> void } -> Result
+
+    def test: (*Hash[String, String] | String | Symbol args, **__todo__ command_options) -> Result
+
+    def wait: (*Hash[String, String] | Regexp | String | Symbol args, **__todo__ command_options) -> Result
+
+    class Result
+      include Enumerable
+
+      attr_reader err: IO
+      alias stderr err
+
+      attr_reader out: IO
+      alias stdout out
+
+      attr_reader runtime: Float
+
+      def ==: (untyped other) -> bool
+
+      def each: (?String? separator) ?{ (String out_elements) -> void } -> void
+
+      def exit_status: () -> Integer
+      alias exitstatus exit_status
+      alias status exit_status
+
+      def exited?: () -> bool
+      alias complete? exited?
+
+      def failure?: () -> bool
+      alias failed? failure?
+
+      def success?: () -> bool
+
+      def to_ary: () -> Array[String]
+
+      def to_i: () -> Integer
+
+      def to_s: () -> String
+    end
+  end
+end
