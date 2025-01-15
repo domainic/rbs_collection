@@ -1,0 +1,52 @@
+module TTY
+  class Console
+  end
+
+  class Reader
+    InputInterrupt: Interrupt
+
+    def self.windows?: () -> bool
+
+    attr_reader completion_handler: Proc?
+
+    attr_reader completion_suffix: String
+
+    attr_reader env: Hash[String, String]
+
+    attr_reader input: IO
+
+    attr_reader output: IO
+
+    attr_reader track_history: bool
+    alias track_history? track_history
+
+    def initialize: (?input: IO, ?output: IO, ?interrupt: Symbol, ?env: Hash[String, String], ?track_history: bool, ?history_cycle: bool, ?history_exclude: Proc, ?history_size: Integer, ?history_duplicates: bool, ?completion_handler: Proc, ?completion_suffix: String) -> void
+
+    def completion_handler=: (Proc handler) -> void
+
+    def completion_suffix=: (String suffix) -> void
+
+    def count_screen_lines: (Integer line_or_size, ?Integer screen_width) -> Integer
+
+    def inspect: () -> String
+
+    def read_keypress: (?echo: bool, ?raw: bool, ?nonblock: bool) -> String
+    alias read_char read_keypress
+
+    def read_line: (?String prompt, ?value: String, ?echo: bool, ?raw: bool, ?nonblock: bool, ?exit_keys: Array[Symbol]) -> String
+
+    def read_multiline: (?String prompt, ?value: String, ?echo: bool, ?raw: bool, ?nonblock: bool, ?exit_keys: Array[Symbol]) ?{ (String) -> void } -> Array[String]
+    alias read_lines read_multiline
+
+    def subscribe: (untyped listener, ?::Hash[untyped, untyped] options) ?{ () -> void } -> void
+
+    def trigger: (untyped event, *untyped args) -> void
+
+    def unbufferred: () ?{ (?) -> void } -> void
+
+    def unsubscribe: (untyped listener) -> void
+  end
+
+  class WinConsole
+  end
+end
