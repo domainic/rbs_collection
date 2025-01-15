@@ -1,0 +1,8 @@
+module TTY
+  class Box
+    type border_options = { ?bottom: bool | Symbol, ?left: bool | Symbol, ?right: bool | Symbol, ?top: bool | Symbol }
+    type title_options = { ?bottom_center: String?, ?bottom_left: String?, ?bottom_right: String?, ?top_center: String?, ?top_left: String?, ?top_right: String?  }
+
+    def self.frame: (*String content, ?align: Symbol, ?border: border_options | Symbol, ?enable_color: bool?, ?height: Integer?, ?left: Integer?, ?padding: Array[Integer] | Integer, ?style: Hash[Symbol, untyped], ?title: title_options, ?top: Integer?, ?width: Integer?) -> String
+  end
+end
