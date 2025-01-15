@@ -1,0 +1,25 @@
+module TTY
+  class Command
+    class Cmd
+      attr_reader command: String
+
+      attr_reader argument: String
+
+      attr_reader options: Hash[String, String]
+
+      attr_reader uuid: String
+
+      attr_reader only_output_on_error: bool
+
+      def environment: () -> Hash[String, String]
+
+      def environment_string: () -> String
+
+      def to_command: () -> String
+
+      def to_s: () -> String
+
+      def to_hash: () -> Hash[Symbol, String]
+    end
+  end
+end

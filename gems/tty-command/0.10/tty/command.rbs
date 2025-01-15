@@ -20,38 +20,10 @@ module TTY
 
     def wait: (*Hash[String, String] | Regexp | String | Symbol args, **__todo__ command_options) -> Result
 
-    class Result
-      include Enumerable
+    private
 
-      attr_reader err: IO
-      alias stderr err
+    def command: (*Hash[String, String] | String | Symbol args) -> Cmd
 
-      attr_reader out: IO
-      alias stdout out
-
-      attr_reader runtime: Float
-
-      def ==: (untyped other) -> bool
-
-      def each: (?String? separator) ?{ (String out_elements) -> void } -> void
-
-      def exit_status: () -> Integer
-      alias exitstatus exit_status
-      alias status exit_status
-
-      def exited?: () -> bool
-      alias complete? exited?
-
-      def failure?: () -> bool
-      alias failed? failure?
-
-      def success?: () -> bool
-
-      def to_ary: () -> Array[String]
-
-      def to_i: () -> Integer
-
-      def to_s: () -> String
-    end
+    def execute_command: (Cmd cmd) ?{ (IO | String out, IO | String err) -> void } -> Result
   end
 end

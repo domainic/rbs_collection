@@ -1,0 +1,7 @@
+module TTY
+  class Command
+    class ExitError < RuntimeError
+      def initialize: (String cmd_name, Result result) -> void
+    end
+  end
+end

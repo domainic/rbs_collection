@@ -1,0 +1,37 @@
+module TTY
+  class Command
+    class Result
+      include Enumerable
+
+      attr_reader err: IO
+      alias stderr err
+
+      attr_reader out: IO
+      alias stdout out
+
+      attr_reader runtime: Float
+
+      def ==: (untyped other) -> bool
+
+      def each: (?String? separator) ?{ (String out_elements) -> void } -> void
+
+      def exit_status: () -> Integer
+      alias exitstatus exit_status
+      alias status exit_status
+
+      def exited?: () -> bool
+      alias complete? exited?
+
+      def failure?: () -> bool
+      alias failed? failure?
+
+      def success?: () -> bool
+
+      def to_ary: () -> Array[String]
+
+      def to_i: () -> Integer
+
+      def to_s: () -> String
+    end
+  end
+end
