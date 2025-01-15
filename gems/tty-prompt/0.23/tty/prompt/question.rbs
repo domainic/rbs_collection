@@ -1,0 +1,6 @@
+module TTY
+  class Prompt
+    class Question
+    end
+  end
+end

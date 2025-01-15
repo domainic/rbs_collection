@@ -1,0 +1,118 @@
+module TTY
+  class Prompt
+
+    attr_reader reader: Reader
+
+    attr_reader cursor: Cursor
+
+    def self.messages: () -> { :range? => "Value %<value>s must be within the range %<in>s", :valid? => "Your answer is invalid (must match %<valid>s)", :required? => "Value must be provided", :convert? => "Cannot convert `%<value>s` to '%<type>s' type" }
+
+    def initialize: (?input: IO, ?output: IO, ?env: Hash[String, String], ?symbols: Hash[Symbol, Symbol], ?prefix: String, ?interrupt: Symbol, ?track_history: bool, ?quiet: bool, ?enable_color: bool?, ?active_color: Symbol, ?help_color: Symbol, ?error_color: Symbol) -> void
+
+    def ask: (?String message, **untyped options) { (TTY::Prompt::Question) -> untyped } -> String
+
+    def clear_char: (?Integer? n) -> String
+
+    def clear_line: () -> String
+
+    def clear_line_after: () -> String
+
+    def clear_line_before: () -> String
+
+    def clear_lines: (Integer n, ?Symbol? direction) -> String
+
+    def clear_screen: () -> String
+
+    def clear_screen_down: () -> String
+
+    def clear_screen_up: () -> String
+
+    def collect: (**untyped options) { (TTY::Prompt::AnswersCollector) -> void } -> Hash[Symbol, untyped]
+
+    def count_screen_lines: (Integer line_or_size, ?Integer screen_width) -> Integer
+
+    def current: () -> String
+
+    def cursor_backward: (Integer n) -> String
+
+    def cursor_down: (Integer n) -> String
+
+    def cursor_forward: (Integer n) -> String
+
+    def cursor_up: (Integer n) -> String
+
+    def debug: (*String messages) -> nil
+
+    def decorate: (String string, *Symbol | Proc colors) -> String
+
+    def enum_select: (String question, *Array[untyped]) { (TTY::Prompt::EnumList) -> void } -> String
+
+    def error: (*String messages, **untyped options) -> nil
+
+    def expand: (String message, *Array[untyped]) { (TTY::Prompt::Expander) -> void } -> untyped
+
+    def inspect: () -> String
+
+    def invoke_question: [T] (Class[T], String message, **untyped options) { (T) -> void } -> untyped
+
+    def invoke_select: [T] (Class[T], String question, *Array[untyped]) { (T) -> void } -> String
+
+    def keypress: (?String message, **untyped options) { (TTY::Prompt::Keypress) -> void } -> String
+
+    def mask: (?String message, **untyped options) { (TTY::Prompt::MaskQuestion) -> void } -> String
+
+    def move: (Integer x, Integer y) -> String
+
+    def move_to: (Integer x, Integer y) -> String
+
+    def multi_select: (String question, *Array[untyped]) { (TTY::Prompt::MultiList) -> void } -> Array[untyped]
+
+    def multiline: (?String message, **untyped options) { (TTY::Prompt::Multiline) -> void } -> Array[String]
+
+    def next_line: () -> String
+
+    def no?: (String message, **untyped options) { (TTY::Prompt::ConfirmQuestion) -> void } -> bool
+
+    def ok: (*String messages, **untyped options) -> nil
+
+    def prev_line: () -> String
+
+    def read_char: (?echo: bool, ?raw: bool, ?nonblock: bool) -> String
+
+    def read_keypress: (?echo: bool, ?raw: bool, ?nonblock: bool) -> String
+
+    def read_line: (?String prompt, ?value: String, ?echo: bool, ?raw: bool, ?nonblock: bool, ?exit_keys: Array[Symbol]) -> String
+
+    def read_multiline: (?String prompt, ?value: String, ?echo: bool, ?raw: bool, ?nonblock: bool, ?exit_keys: Array[Symbol]) { (String) -> void } -> Array[String]
+
+    def restore: () -> String
+
+    def save: () -> String
+
+    def say: (?String message, **untyped options) -> nil
+
+    def scroll_down: () -> String
+
+    def scroll_up: () -> String
+
+    def select: (String question, *Array[untyped]) { (TTY::Prompt::List) -> void } -> String
+
+    def slider: (String question, ?Array[untyped] choices, **untyped options) { (TTY::Prompt::Slider) -> void } -> untyped
+
+    def subscribe: (untyped listener, ?Hash[untyped, untyped] options) { () -> void } -> void
+
+    def suggest: (String message, Array[String] possibilities, **untyped options) -> String
+
+    def trigger: (untyped event, *untyped args) -> void
+
+    def tty?: () -> bool
+
+    def unbufferred: () { () -> void } -> void
+
+    def unsubscribe: (untyped listener) -> void
+
+    def warn: (*String messages, **untyped options) -> nil
+
+    def yes?: (String message, **untyped options) { (TTY::Prompt::ConfirmQuestion) -> void } -> bool
+  end
+end
